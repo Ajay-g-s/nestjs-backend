@@ -10,6 +10,7 @@ import { StudentController } from './student/student.controller';
 import { OrderController } from './order/order.controller';
 import { OrderService } from './order/order.service';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -22,6 +23,11 @@ import { AuthModule } from './auth/auth.module';
       { name: 'order', schema: OrderSchema },
     ]),
     AuthModule,
+    ConfigModule.forRoot({
+      envFilePath: ['.env'],
+      isGlobal: true,
+      cache: true,
+    }),
   ],
   controllers: [AppController, StudentController, OrderController],
   providers: [AppService, StudentService, OrderService],
