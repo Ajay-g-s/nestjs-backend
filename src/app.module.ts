@@ -9,6 +9,7 @@ import { StudentService } from './student/student.service';
 import { StudentController } from './student/student.controller';
 import { OrderController } from './order/order.controller';
 import { OrderService } from './order/order.service';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { OrderService } from './order/order.service';
       { name: 'student', schema: StudentSchema },
       { name: 'order', schema: OrderSchema },
     ]),
+    AuthModule,
   ],
   controllers: [AppController, StudentController, OrderController],
   providers: [AppService, StudentService, OrderService],
